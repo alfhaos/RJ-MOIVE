@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/movie
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  quartz:
+     job-store-type: jdbc
+     jdbc:
+       initialize-schema: always
+
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        default_batch_fetch_size: 100
+    open-in-view: true
+
+
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type.descriptor.sql: trace
+
+movie:
+  url: http://localhost:3000/
+  api:
+    key: 93015210d7f2cba66635248f5044353c
+    daily: http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json
+    weekly: http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json
