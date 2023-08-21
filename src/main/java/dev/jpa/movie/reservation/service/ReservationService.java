@@ -72,7 +72,7 @@ public class  ReservationService {
         //동시성 제어 테이블 좌석 수정
         ConcurrencyMovie findConcurrencyMovie = concurrencyMovieRepository.findById(concurrencyMovieDto.getConcurrencyEmId()).get();
 
-        findConcurrencyMovie.setSeatState(String.valueOf(SeatState.EMPTY));
+        findConcurrencyMovie.updateState(String.valueOf(SeatState.EMPTY));
 
         //예약 정보 수정
         Reservation findReservation = reservationRepository.findById(reservationId).get();
@@ -125,7 +125,7 @@ public class  ReservationService {
         result.put("saveReservationId",saveReservation.getId());
 
         //좌석 예약 완료
-        concurrencyMovie.setSeatState(String.valueOf(SeatState.COMPLETELY));
+        concurrencyMovie.updateState(String.valueOf(SeatState.COMPLETELY));
 
         return result;
     }
@@ -165,10 +165,8 @@ public class  ReservationService {
     // 동시성 제어 체크 함수
     public ConcurrencyMovie concurrencyCheck(ConcurrencyEmId concurrencyEmId) throws StaleObjectStateException {
 
-        System.out.println(concurrencyEmId.toString());
-
         ConcurrencyMovie concurrencyMovie = concurrencyMovieRepository.findById(concurrencyEmId).get();
-        concurrencyMovie.setSeatState(String.valueOf(SeatState.ONGOING));
+        concurrencyMovie.updateState(String.valueOf(SeatState.ONGOING));
         concurrencyMovieRepository.save(concurrencyMovie);
 
         return concurrencyMovie;
@@ -212,4 +210,27 @@ public class  ReservationService {
         return result;
     }
 
+    @Transactional
+    public void rsvCancel(Map<String, Object> reservation) {
+
+        System.out.println(reservation);
+        int intValue = (int) reservation.get("reservationId"); // "intValue"는 Map의 키입니다.
+        long longValue = (long) intValue; // int 값을 long으로 형 변환하여 저장
+        //예약 정보 삭제
+        Reservation findReservation = reservationRepository.findById(longValue).get();
+        findReservation.updateDelYn("Y");
+
+        //결제내역 삭제
+        ReservastionAccount findReservastionAccount = reservastionAccountRepository.findById((String) reservation.get("accountId")).get();
+        findReservastionAccount.updateDelYn("Y");
+
+        //영화좌석 동시성제어 테이블 상태 업데이트
+        ConcurrencyEmId concurrencyEmId = buildConcurrencyEmId((String) reservation.get("movieCd"),
+                (String) reservation.get("seat"),(String) reservation.get("screeningTime"));
+
+        ConcurrencyMovie findConcurrencyMovie = concurrencyMovieRepository.findById(concurrencyEmId).get();
+
+        findConcurrencyMovie.updateState(String.valueOf(SeatState.EMPTY));
+        
+    }
 }

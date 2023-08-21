@@ -6,12 +6,10 @@ body {
 
 .container {
     max-width: 800px;
-
-
-    margin: 20px auto;
     padding: 20px;
+    position: relative;
+    top: 36px;
     background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -22,6 +20,7 @@ h1 {
 .movie-details {
     border-bottom: 1px solid #ddd;
     padding-bottom: 20px;
+    background-color: #F2F0E4;
 
 
     margin-bottom: 20px;
@@ -100,8 +99,8 @@ h1 {
 
 table {
     border-collapse: collapse;
-    margin-top: 20px;
     border: 2px solid #ccc;
+    margin: 25px;
 }
 
 th, td {
@@ -118,7 +117,7 @@ th {
 }
 
 .seat {
-    width: 40px;
+    width: 51px;
     height: 40px;
     font-size: 16px;
     background-color: #f0f0f0;
@@ -128,12 +127,17 @@ th {
 
 .available {
     float: left;
-    background-color: #b2ffb2;
+    background-color: lightgray;
+    cursor: pointer;
+}
+.available:hover{
+    background-color: #66bb6a;
 }
 
 .unavailable {
     float: left;
-    background-color: #ff8080;
+    background-color: red;
+    cursor: not-allowed;
 }
 
 .reserve-button:hover {
@@ -163,4 +167,232 @@ th {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* cgv Clone ======================================= */
+/* 인원 좌석 헤더*/
+#ticket .steps {
+    position: relative;
+    width: 996px;
+    background-color: #F2F0E4;
+}
+#ticket .steps .step2 {
+    display: block;
+    background-color: #d4d3c9;
+    min-height: 530px;
+    position: relative;
+}
+#ticket .section-seat {
+    float: none;
+    width: 992px;
+    min-height: 528px;
+    position: relative;
+    height: 100%;
+    margin-left: 2px;
+    background-color: #f2f0e5;
+    overflow: hidden;
+}
+.col-head {
+    background-image: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/titles.png);
+    background-repeat: no-repeat;
+    background-position: 50% -124px;
+    position: relative;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    background-color: #333333;
+}
+.col-body {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    height: auto;
+}
+.person_screen {
+    position: relative;
+    border-bottom: 2px solid #d4d3c9;
+    display: inline-block;
+    padding: 17px 0 3px 0;
+    width: 100%;
+}
+
+.section-numberofpeople {
+    float: left;
+    width: 460px;
+    height: 100%;
+}
+.col-body {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+#ticket_tnb {
+    position: relative;
+    width: 100%;
+    min-width: 996px;
+    height: 128px;
+    background-color: #1d1d1c;
+}
+.tnb {
+    margin: 0 auto;
+    width: 996px;
+    height: 108px;
+    padding: 10px 0;
+    position: relative;
+    top: 10px;
+}
+.info.theater {
+    width: 200px !important;
+    float: left;
+    height: 108px;
+    padding-right: 2px;
+    background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/tnb/split.png) no-repeat right;
+    position: relative;
+    color: #cccccc;
+    font-size: 12px;
+    left: 10%;
+}
+.tnb .info .row {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    height: 30px;
+    line-height: 20px;
+}
+.info.path {
+    float: left;
+    height: 108px;
+    padding-right: 2px;
+    background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/tnb/split.png) no-repeat right;
+    position: relative;
+    color: #cccccc;
+    font-size: 12px;
+    left: 15%
+}
+.tnb .info .row.colspan4 {
+    height: 80px;
+    margin-top: 8px;
+}
+.path-step1 {
+    width: 111px !important;
+    height: 100%;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    margin-left: 23px;
+    background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/tnb/tnb_steps.png) no-repeat 10% 26px;
+}
+.path-step2 {
+    width: 111px !important;
+    height: 100%;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    margin-left: 23px;
+    background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/tnb/tnb_steps.png) no-repeat 50% -190px;
+}
+.path-step3 {
+    width: 71px !important;
+    height: 100%;
+    margin-left: 18px;
+    display: inline-block;
+    margin-right: 90px;
+    zoom: 1;
+    background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/tnb/tnb_steps.png) no-repeat 50% -298px;
+}
+.btn-right {
+    background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/tnb/tnb_buttons.png) no-repeat 79% -328px;
+    overflow: hidden;
+    text-indent: -1000px;
+    color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+    text-decoration: underline;
+    position: absolute;
+    top: 10px;
+    right: 9%;
+    width: 110px;
+    height: 110px;
+    cursor: pointer;
+
+}
+.btn-left {
+    background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/tnb/tnb_buttons.png) no-repeat;
+    overflow: hidden;
+    text-indent: -1000px;
+    float: left;
+    width: 106px;
+    position: absolute;
+    height: 108px;
+    margin-right: 24px;
+    top: 10px;
+    left: 9%;
+}
+.numberofpeople-select {
+    margin-left: 150px;
+    padding-right: 18px;
+    border-right: 1px solid #d4d3c9;
+    display: inline-block;
+}
+.numberofpeople-select img {
+    width: 150px;
+}
+.numberofpeople-select .group {
+    float: left;
+    margin-bottom: 8px;
+}
+
+.section-screen-select {
+    display: block;
+    width: 500px;
+    height: 100%;
+    float: left;
+    overflow: visible;
+    background: transparent;
+    margin-top: 1px;
+}
+#ticket .section-screen-select > div {
+    position: relative;
+    height: 100%;
+    letter-spacing: -1px;
+    width: auto;
+    margin: 0 0 0 20px;
+}
+.theater-info span {
+    font-size: 1.1em;
+    padding: 0 11px 0 10px;
+    border-right: 1px solid #ccc;
+    max-width: 200px;
+    height: 35px;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.playYMD-info1 {
+    display: flex;
+}
+.playYMD-info2 {
+    display: inline-block;
+    line-height: 1.2em;
+    margin-top: 35px !important;
+    color: #5a5a5a;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    font-size: 1.7em;
+    margin-left: 10px !important;
+}
+.form-select{
+    margin-left: 10px;
+    width: 100px !important;
+}
+.time {
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+.seat-selection{
+    display: block;
+    background-color: #F2F0E4;
+    position: relative;
+    bottom: 20px;
+    min-height: 350px;
 }

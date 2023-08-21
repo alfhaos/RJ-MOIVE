@@ -85,4 +85,10 @@ public class ReservationController {
 
         return list;
     }
+
+    @PostMapping("/cancel")
+    public void reservationCancel(@RequestBody Map<String, Object> reservation) {
+
+        reservationService.rsvCancel(reservation);
+    }
 }

@@ -1,0 +1,98 @@
+#contaniner {
+    position: relative;
+    width: 100%;
+    z-index: 7;
+    min-height: 664px;
+    margin-bottom: 40px;
+
+}
+#contents {
+    clear: both;
+    padding-bottom: 50px;
+    position: relative;
+    width: 750px;
+    margin: 0 auto;
+}
+.cols-content {
+    padding-top: 25px;
+    margin-top: 25px;
+}
+.col-detail {
+    float: right;
+    position: relative;
+    width: 800px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+.movielog-detail-wrap {
+    width: 720px;
+    margin: 0 auto;
+}
+.tit-mycgv {
+    overflow: hidden;
+    position: relative;
+    line-height: 34px;
+}
+.tit-mycgv > h4 {
+    float: left;
+    height: 34px;
+    margin: 0;
+    background-image: none;
+    color: #222;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 34px;
+    text-align: left;
+}
+.tit-mycgv p {
+    float: left;
+    margin-left: 5px;
+}
+.tit-mycgv > .set-combo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    color: #666;
+    text-align: left;
+    line-height: 1.2;
+}
+.set-combo > select {
+    margin-right: 5px;
+    line-height: 27px;
+    height: 29px;
+    padding: 3px 5px;
+    border: 1px solid #b4b3aa;
+}
+
+.sect-wishlist-lst {
+    margin-top: 25px;
+}
+ul {
+    list-style:none;
+}
+.article-movie-info {
+    position: relative;
+}
+.box-image {
+    float: left;
+    width: 110px;
+    height: 158px;
+    margin-right: 22px;
+}
+.thumb-image {
+    display: block;
+    position: relative;
+}
+.thumb-image > img {
+    width: 100%;
+}
+.article-movie-info:after {
+    content: '';
+    display: block;
+    clear: both;
+    border: 1px solid gray;
+}
+.cancelBtn {
+    float: right;
+    margin-bottom: 10px;
+}

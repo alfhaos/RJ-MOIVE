@@ -1,9 +1,20 @@
-
 import React, {useEffect, useState} from "react";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import axios from 'axios';
 import './MovieList.css';
+import { FiChevronRight } from 'react-icons/fi';
 
+function PrevButton({onClick, currentPage}) {
+
+    return     <div className="circle-prev" onClick={onClick}>
+        <FiChevronRight style={{transform: 'rotate(180deg)'}}/>
+    </div>;
+}
+function NextButton({ onClick }) {
+    return     <div className="circle-arrow" onClick={onClick}>
+        <FiChevronRight />
+    </div>;
+}
 function Intro() {
     return (
         <div id="ctl00_PlaceHolderContent_divMovieSelection_wrap" className="movieSelection_wrap">
@@ -24,50 +35,76 @@ function Intro() {
     );
 }
 
-function MainList() {
+function MainList(props) {
     const [movieList, setMovieList] = useState([]);
-    const movies = [];
     const navigate = useNavigate();
 
     //해당 컴포넌트 랜딩시 axios을 통해 영화 목록을 가져옴
     useEffect(() => {
         axios.get('/api/movieList')
-            .then(response => setMovieList(response.data))
+            .then( response =>   setMovieList(response.data))
             .catch(error => console.log(error))
     }, []);
 
-    for(let i = 0; i<movieList.length ; i++) {
-        let temp = movieList[i];
-        movies.push(
-            <div class ="movie">
-                <img src={`${process.env.PUBLIC_URL}/movieImg/${temp.movieCd}.jpg`} alt="Movie Poster" />
-                <h2>{temp.movieNm}</h2>
-                <p>개봉일 : {temp.openDt}</p>
-                <button className="reserve-button" onClick={() =>
-                    //Reservation.js으로 화면 이동 및 선택한 영화 정보 넘기기
-                    navigate("/movieReservation",
-                    {state:{"movie":temp}})}>예약하기</button>
-            </div>
-        )
-    }
+    const moviesPerPage = 5;
+    const startIndex = (props.currentPage - 1) * moviesPerPage;
+    const endIndex = startIndex + moviesPerPage;
 
-    return <div>
-        {movies}
+    return <div className="swiper-wrapper" style={{transform: 'translate3d(0px, 0px, 0px)'}}>
+        {movieList.slice(startIndex, endIndex).map(temp => (
+        <div className ="movie">
+            <img src={`${process.env.PUBLIC_URL}/movieImg/${temp.movieCd}.jpg`} alt="Movie Poster" />
+            <strong>{temp.movieNm}</strong>
+            <br/>
+            <strong>차트 순위 :{temp.rank}</strong>
+            <button className="reserve-button" onClick={() =>
+                //Reservation.js으로 화면 이동 및 선택한 영화 정보 넘기기
+                navigate("/movieReservation",
+                    {state:{"movie":temp}})}>예약하기</button>
+        </div>
+        ))}
     </div>
 
 }
 function MovieList(){
+    const [currentPage, setCurrentPage] = useState(1);
+    const [showPrevButton, setShowPrevButton] = useState(false); // Add state for visibility
+    const [showNextButton, setShowNextButton] = useState(true); // Add state for visibility
+
+    //다음 버튼클릭시 상태설정
+    const handleNextButtonClick = () => {
+        setCurrentPage(prevPage => prevPage + 1);
+        setShowPrevButton(true);
+        setShowNextButton(false);
+    };
+
+    //이전 버튼클릭시 상태설정
+    const handlePrevButtonClick = () => {
+        setCurrentPage(prevPage => prevPage - 1);
+        setShowNextButton(false);
+        setShowPrevButton(false);
+    };
+
     return (
         <div className="MovieContainer">
             <Intro></Intro>
-            <h2>무비 차트</h2>
-            <div className="MovieList">
-                <MainList></MainList>
+            <div className="movieChartBeScreen_wrap">
+                <div className="contents">
+                    <div className="movieChartBeScreen_btn_wrap">
+                        <div className="tabBtn_wrap">
+                            <h3><a href="#none" className="active" id="btnMovie">무비차트</a></h3>
+                            <h3><a href="#none" id="btnReserMovie">최신순</a></h3>
+                        </div>
+                    </div>
+                    <div className="swiper movieChart_list swiper-container-initialized swiper-container-horizontal" id="movieChart_list">
+                        <MainList currentPage = {currentPage} setCurrentPage = {setCurrentPage}></MainList>
+                    </div>
+                    {showNextButton && (<NextButton  onClick={handleNextButtonClick} />)}
+                    {showPrevButton  && (<PrevButton onClick={handlePrevButtonClick} />)}
+                </div>
             </div>
         </div>
     );
 }
-
-
 
 export default MovieList;

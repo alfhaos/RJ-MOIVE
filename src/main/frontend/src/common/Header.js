@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Header.css';
+import KakaoPayApproval from "../kakaoPay/kakaoPayApproval";
 
 function Header(props) {
     return (
@@ -9,7 +10,7 @@ function Header(props) {
             <Navbar.Brand as={Link} to="http://localhost:3000/">RJ-MOVIE</Navbar.Brand>
             <Nav className="mr-auto">
                 <Nav.Link as={Link} to="http://localhost:3000/">영화</Nav.Link>
-                <Nav.Link as={Link} to="/movieReservation">예약목록</Nav.Link>
+                <Nav.Link as={Link} to="http://localhost:3000/KakaoPayApproval">예약목록</Nav.Link>
                 {/* Add other menu items */}
             </Nav>
         </Navbar>

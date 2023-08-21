@@ -10,14 +10,6 @@ body {
   text-align: center;
   line-height: 30px;
 }
-.seat.available {
-  background-color: #66bb6a;
-  cursor: pointer;
-}
-.seat.unavailable {
-  background-color: #f44336;
-  cursor: not-allowed;
-}
 .row {
   margin-bottom: 10px;
 }

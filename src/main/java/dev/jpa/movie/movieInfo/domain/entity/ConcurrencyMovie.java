@@ -13,7 +13,6 @@ import org.springframework.data.jpa.repository.Lock;
 
 @Entity
 @Getter
-@Setter
 @ToString(of = {"id", "movie"})
 @Table(name = "CONCURRENCY_MOVIE")
 public class ConcurrencyMovie extends BaseEntity {
@@ -32,7 +31,6 @@ public class ConcurrencyMovie extends BaseEntity {
     private Long version;
 
     public ConcurrencyMovie() {
-
     }
 
     public ConcurrencyMovie(ConcurrencyEmId id) {
@@ -42,6 +40,9 @@ public class ConcurrencyMovie extends BaseEntity {
     public void addMovie(Movie movie) {
         this.movie = movie;
         movie.getConcurrencyMovie().add(this);
+    }
+    public void updateState(String seatState) {
+        this.seatState = seatState;
     }
 
 }

@@ -33,4 +33,8 @@ public class ReservastionAccount extends BaseEntity {
     public void setPayment(String payment) {
         this.payment = payment;
     }
+
+    public void updateDelYn(String delYn) {
+        this.delYn = delYn;
+    }
 }
