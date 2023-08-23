@@ -79,11 +79,9 @@ public class ReservationController {
     }
 
     @GetMapping("/userReservationList")
-    public List<UserReservationDto> reservationList(HttpSession session) {
+    public List<UserReservationDto> reservationList(@RequestParam String searchState) {
 
-        List<UserReservationDto> list = reservationService.findUserReservationList();
-
-        return list;
+        return reservationService.searchMemberReservationList(searchState);
     }
 
     @PostMapping("/cancel")

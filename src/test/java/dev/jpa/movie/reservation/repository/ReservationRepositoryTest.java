@@ -3,6 +3,7 @@ package dev.jpa.movie.reservation.repository;
 import dev.jpa.movie.movieInfo.domain.entity.Movie;
 import dev.jpa.movie.movieInfo.repository.MovieRepository;
 import dev.jpa.movie.reservation.domain.dto.ReservationListDto;
+import dev.jpa.movie.reservation.domain.dto.UserReservationDto;
 import dev.jpa.movie.reservation.domain.entity.MovieData;
 import dev.jpa.movie.reservation.domain.entity.MovieScreening;
 import dev.jpa.movie.reservation.domain.entity.Reservation;
@@ -103,11 +104,11 @@ class ReservationRepositoryTest {
     // 특정 회원 예약 목록 조회 테스트
     public void ReservationReadTest() {
 
-//        List<ReservationListDto> reservations = reservationRepository.findMemberReservationList("test2");
-//
-//        for (ReservationListDto reservation : reservations) {
-//            System.out.println("read test = " + reservation.toString());
-//        }
+        List<UserReservationDto> reservations = reservationRepository.searchMemberReservationList("test", "complete");
+
+        for (UserReservationDto reservation : reservations) {
+            System.out.println("read test = " + reservation.toString());
+        }
     }
 
 }

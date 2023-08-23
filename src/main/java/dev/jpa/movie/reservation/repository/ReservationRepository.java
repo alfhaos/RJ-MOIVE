@@ -12,12 +12,13 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 import java.util.Optional;
 
-public interface ReservationRepository extends JpaRepository<Reservation, Long> {
+public interface ReservationRepository extends JpaRepository<Reservation, Long>, ReservationRepositoryCustom {
 
     Optional<Reservation> findById(Long reservationId);
 
     //oneToMany 관계는 join에서 on 절 사용 불가능
-    @Query("select new dev.jpa.movie.reservation.domain.dto.UserReservationDto(M.movieNm,R.updatedDate,MD.movieScreening.screeningTime,RA.payment, " +
+    @Query("select new dev.jpa.movie.reservation.domain.dto.UserReservationDto(" +
+            "M.movieNm,R.updatedDate,MD.movieScreening.screeningTime,RA.payment, " +
             "MD.movieScreening.seat, R.delYn, M.movieCd, R.id, RA.id) " +
             "from Reservation R join Movie M " +
             "on R.movie.movieCd = M.movieCd " +

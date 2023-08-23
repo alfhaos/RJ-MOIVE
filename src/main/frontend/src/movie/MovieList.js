@@ -38,10 +38,11 @@ function Intro() {
 function MainList(props) {
     const [movieList, setMovieList] = useState([]);
     const navigate = useNavigate();
+    let handleParam = props.movieListDivision;
 
     //해당 컴포넌트 랜딩시 axios을 통해 영화 목록을 가져옴
     useEffect(() => {
-        axios.get('/api/movieList')
+        axios.get('/api/movieList',{params : {handleParam : handleParam}})
             .then( response =>   setMovieList(response.data))
             .catch(error => console.log(error))
     }, []);
@@ -71,6 +72,15 @@ function MovieList(){
     const [showPrevButton, setShowPrevButton] = useState(false); // Add state for visibility
     const [showNextButton, setShowNextButton] = useState(true); // Add state for visibility
 
+    //영화목록 출력 종류
+    const [movieListDivision, setMovieListDivision] = useState('btnMovie');
+
+    const handleMovieList = (event) => {
+        let targetId= event.target.id;
+        event.preventDefault();
+        setMovieListDivision(targetId);
+    }
+
     //다음 버튼클릭시 상태설정
     const handleNextButtonClick = () => {
         setCurrentPage(prevPage => prevPage + 1);
@@ -92,12 +102,17 @@ function MovieList(){
                 <div className="contents">
                     <div className="movieChartBeScreen_btn_wrap">
                         <div className="tabBtn_wrap">
-                            <h3><a href="#none" className="active" id="btnMovie">무비차트</a></h3>
-                            <h3><a href="#none" id="btnReserMovie">최신순</a></h3>
+                            <h3><a className={movieListDivision === 'btnMovie' ? 'active' : ''}
+                                   id="btnMovie"
+                                   onClick={handleMovieList}>무비차트</a></h3>
+
+                            <h3><a className={movieListDivision === 'btnReserMovie' ? 'active' : ''}
+                                   id="btnReserMovie"
+                                   onClick={handleMovieList}>최신순</a></h3>
                         </div>
                     </div>
                     <div className="swiper movieChart_list swiper-container-initialized swiper-container-horizontal" id="movieChart_list">
-                        <MainList currentPage = {currentPage} setCurrentPage = {setCurrentPage}></MainList>
+                        <MainList key = {movieListDivision} currentPage = {currentPage} setCurrentPage = {setCurrentPage} movieListDivision = {movieListDivision}></MainList>
                     </div>
                     {showNextButton && (<NextButton  onClick={handleNextButtonClick} />)}
                     {showPrevButton  && (<PrevButton onClick={handlePrevButtonClick} />)}

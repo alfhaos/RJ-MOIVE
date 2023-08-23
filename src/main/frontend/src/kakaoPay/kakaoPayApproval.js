@@ -9,8 +9,6 @@ function ReservationList (props) {
 
     const rsvCancel = (reservation) => {
 
-        console.log(reservation.reservation);
-
         let params = {
             time : reservation.reservation.time,
             reservationDate : reservation.reservation.reservationDate,
@@ -49,9 +47,10 @@ function ReservationList (props) {
                             </div>
                             <p className="date">상영 시간 : {reservation.screeningTime}</p>
                             <span className="theater">인원: 1명</span>
-                            <Button className="cancelBtn" type="button" onClick={(event) => {
+                            {reservation.delYn === 'N' && <Button className="cancelBtn" type="button" onClick={(event) => {
                                 rsvCancel({reservation});
-                            }} variant="danger" >예매 취소</Button>
+                            }} variant="danger" >예매 취소</Button>}
+                            {reservation.delYn === 'Y' && <Button className="cancelBtn" type="button" variant="outline-primary" >취소 완료</Button>}
                         </div>
                     </div>
                 </li>
@@ -66,6 +65,11 @@ function KakaoPayApproval(){
     const [chkModalOpen, setChkModalOpen] = useState(false);
     const [content, setContent] = useState("예매 취소 완료되었습니다.");
 
+    const [searchState, setSearchState] = useState("complete");
+
+    const handleSearchList = () => {
+        axiosFunction();
+    }
     const closeModal = () => {
         setChkModalOpen(false);
         window.location.reload(); // 페이지 새로고침
@@ -75,9 +79,16 @@ function KakaoPayApproval(){
         setChkModalOpen(result);
     }
 
+    //조회 조건변경시
+    const handleChangeSelect = (event) => {
+        setSearchState(event.target.value);
+    }
 
-    useEffect(() => {
-        axios.get("/api/rsv/userReservationList") // 예약 정보를 가져오는 API 경로로 변경하세요
+    const axiosFunction = () => {
+        axios.get("/api/rsv/userReservationList", {params:
+                {
+                    searchState: searchState
+                }})
             .then(response => {
                 setReservations(response.data);
 
@@ -85,6 +96,10 @@ function KakaoPayApproval(){
             .catch(error => {
                 console.error("Error fetching reservations:", error);
             });
+    }
+    //화면 랜더링시 바로 실행
+    useEffect(() => {
+        axiosFunction();
     }, []);
     return (
         <Container>
@@ -98,21 +113,19 @@ function KakaoPayApproval(){
                                         <h3>예약목록</h3>
                                         <p><em>{reservations.length}건</em></p>
                                         <div className="set-combo">
-                                            <select id="year" name="year">
-                                                <option value="" selected="selected">전체</option>
+                                            <select onChange={handleChangeSelect}>
+                                                <option value="all">전체</option>
 
-                                                <option value="2019">2019</option>
+                                                <option value="complete" selected="selected" >예매 완료</option>
 
-                                                <option value="2022">2022</option>
-
-                                                <option value="2023">2023</option>
+                                                <option value="cancel">예매 취소</option>
 
                                             </select>
-                                            <button type="submit" className="round gray"><span>GO</span></button>
+                                            <button type="button" onClick={handleSearchList} className="round gray"><span>조회</span></button>
                                         </div>
                                     </div>
                                 </form>
-                                <ReservationList reservations = {reservations} updateModalOpen = {updateModalOpen} ></ReservationList>
+                                <ReservationList key = {searchState} reservations = {reservations} updateModalOpen = {updateModalOpen} ></ReservationList>
                             </div>
                             { chkModalOpen &&(<CheckModal isOpen = {chkModalOpen} content = {content} closeModal = {closeModal}/>)}
                         </div>

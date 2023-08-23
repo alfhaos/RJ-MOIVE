@@ -233,4 +233,8 @@ public class  ReservationService {
         findConcurrencyMovie.updateState(String.valueOf(SeatState.EMPTY));
         
     }
+
+    public List<UserReservationDto> searchMemberReservationList(String searchState) {
+        return reservationRepository.searchMemberReservationList("test", searchState);
+    }
 }

@@ -1,5 +1,6 @@
 package dev.jpa.movie.reservation.domain.dto;
 
+import com.querydsl.core.annotations.QueryProjection;
 import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
@@ -20,6 +21,7 @@ public class UserReservationDto{
     private Long reservationId;
     private String accountId;
 
+    @QueryProjection
     public UserReservationDto(String movieNm, LocalDateTime reservationDate, String screeningTime,
                               String price, String seat, String delYn, String movieCd, Long reservationId, String accountId) {
         this.movieNm = movieNm;

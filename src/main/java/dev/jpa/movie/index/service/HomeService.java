@@ -17,4 +17,8 @@ public class HomeService {
     public List<MovieIndexDto> findMovieIndexDto(LocalDateTime dateTime) {
         return homeRepository.findMovieIndexDto(dateTime);
     }
+
+    public List<MovieIndexDto> searchIndexList(String handleParam) {
+        return homeRepository.searchIndexList(handleParam);
+    }
 }

@@ -30,4 +30,15 @@ class HomeRepositoryTest {
 
     }
 
+    @Test
+    public void searchTest() {
+        String handleParam = "btnMovie";
+
+        List<MovieIndexDto> temp = homeRepository.searchIndexList(handleParam);
+
+        for (MovieIndexDto movieIndexDto : temp) {
+            System.out.println(movieIndexDto.toString());
+        }
+    }
+
 }

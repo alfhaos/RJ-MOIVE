@@ -1,5 +1,6 @@
 package dev.jpa.movie.movieInfo.domain.dto;
 
+import com.querydsl.core.annotations.QueryProjection;
 import lombok.Data;
 
 @Data
@@ -11,6 +12,7 @@ public class MovieIndexDto {
     private String openDt;
     private String audiAcc;
 
+    @QueryProjection
     public MovieIndexDto(String movieCd, String movieNm, String rank, String openDt, String audiAcc) {
         this.movieCd = movieCd;
         this.movieNm = movieNm;
