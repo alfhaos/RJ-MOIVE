@@ -13,6 +13,10 @@
 [기간]
 프로젝트 진행 기간 (2023.7 ~ 2023.8)
 
+[ERD]
+![image](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/333c38ea-7680-4790-820a-9540bd860b4f)
+
+
 [구현 기능]
 
 [후기]
