@@ -28,15 +28,15 @@
    
 ![2](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/fd179755-2932-4461-b7f4-7aa07c44c21c)
    
-4. 결제 및 예약 진행
+3. 결제 및 예약 진행
    
 ![3](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/df5fa88e-4aee-4f3d-bcda-9514ba3972c8)
 
-6. 예약 목록 조회
+4. 예약 목록 조회
    
 ![4](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/2f137ac3-0545-4826-940c-c0ec78bed81e)
 
-8. 예약 취소
+5. 예약 취소
    
 ![5](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/0933ab46-45dd-4a2d-9eb8-f738ffcdfeda)
 
