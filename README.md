@@ -16,8 +16,27 @@
 [ERD]
 ![image](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/333c38ea-7680-4790-820a-9540bd860b4f)
 
+[Entity 연관관계]
+![image](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/e8d4199a-c937-4639-8a8e-0c49415147b9)
 
 [구현 기능]
+1. 영화 목록 조회
+   ![image](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/437897f8-c304-40a2-b37c-b9a9945a1b0e)
+
+2. 예약 진행 화면
+   ![image](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/c8e428f7-26a5-4cfe-a5c6-77ecfa1d5744)
+   
+3. 결제 및 예약 진행
+![image](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/c9e9e316-c578-49b6-84a6-8e02a8e90a5e)
+
+4. 예약 목록 조회
+![image](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/e4483aac-3f50-45c1-be3d-fc15ec5494f9)
+
+5. 예약 취소
+   ![image](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/e7a01ebb-1cfd-411f-9c7f-7aa7949ab123)
+
+[동시성 제어 테스트]
+![image](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/71fd12f5-eff9-4b8a-a413-4b5df55d3758)
 
 [후기]
 - 영화 목록 조회 부터 예약, 결제 , 예약 확인등의 기능을 TDD방법을 이용하여 단위 테스트를 진행하며 개발을 진행하였고 이를 통해 테스트의 중요성을 경험하였습니다.
