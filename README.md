@@ -21,19 +21,21 @@
 
 [구현 기능]
 1. 영화 목록 조회
-   ![image](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/437897f8-c304-40a2-b37c-b9a9945a1b0e)
+   
+![1](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/12bbd72c-089d-4e6c-ada2-911e7849a20b)
 
 2. 예약 진행 화면
-   ![image](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/c8e428f7-26a5-4cfe-a5c6-77ecfa1d5744)
+![2](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/fd179755-2932-4461-b7f4-7aa07c44c21c)
+
    
 3. 결제 및 예약 진행
-![image](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/c9e9e316-c578-49b6-84a6-8e02a8e90a5e)
+![3](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/df5fa88e-4aee-4f3d-bcda-9514ba3972c8)
 
 4. 예약 목록 조회
-![image](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/e4483aac-3f50-45c1-be3d-fc15ec5494f9)
+![4](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/2f137ac3-0545-4826-940c-c0ec78bed81e)
 
 5. 예약 취소
-   ![image](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/e7a01ebb-1cfd-411f-9c7f-7aa7949ab123)
+![5](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/0933ab46-45dd-4a2d-9eb8-f738ffcdfeda)
 
 [동시성 제어 테스트]
 ![image](https://github.com/alfhaos/RJ-MOIVE/assets/87509332/71fd12f5-eff9-4b8a-a413-4b5df55d3758)
